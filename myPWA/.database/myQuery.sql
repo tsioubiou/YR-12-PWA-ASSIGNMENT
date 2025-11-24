@@ -118,6 +118,7 @@ INSERT INTO SongsGenres (SongGenreID, SongID, SongName, GenreID, GenreName) VALU
 (16, 6, 'Dream Parade', 5, 'Tearout');
 */
 
+--Request by: Sister.
 --Use this structure to add the multi-artist collaboration album: UNDERTALE (10-Year Anniversary Remixes) to the database.
 
 /*
@@ -189,6 +190,63 @@ INSERT INTO SongsGenres (SongGenreID, SongID, SongName, GenreID, GenreName) VALU
 (24, 14, 'UNDERTALE - ASGORE (PrototypeRaptor Remix)', 1, 'Electronic'),
 (25, 15, 'UNDERTALE - Hopes and Dreams (Haywyre Remix)', 1, 'Electronic'),
 (26, 16, 'UNDERTALE - Megalovania (Pegboard Nerds Remix)', 8, 'Electro House');
+
+--Request by: Mum.
+--Adding the solo album: The Black Album to the database.
+
+INSERT INTO Artists (ArtistID, ArtistName) VALUES
+(14, 'Metallica');
+
+INSERT INTO Albums (AlbumID, AlbumName, AlbumLength, AlbumSongCount, AlbumReleaseDate) VALUES
+(4, 'The Black Album', '1:01:16', 12, '12 Aug 1991');
+
+INSERT INTO Songs (SongID, SongName, SongLength, AlbumID, AlbumName) VALUES
+(17, 'Enter Sandman', '5:42', 4, 'The Black Album'),
+(18, 'Sad But True', '4:17', 4, 'The Black Album'),
+(19, 'Holier Than Thou', '3:46', 4, 'The Black Album'),
+(20, 'The Unforgiven', '6:32', 4, 'The Black Album'),
+(21, 'Wherever I May Roam', '6:35', 4, 'The Black Album'),
+(22, 'Don''t Tread on Me', '4:09', 4, 'The Black Album'),
+(23, 'Through the Never', '4:01', 4, 'The Black Album'),
+(24, 'Nothing Else Matters', '6:07', 4, 'The Black Album'),
+(25, 'Of Wolf and Man', '4:14', 4, 'The Black Album'),
+(26, 'The God That Failed', '5:08', 4, 'The Black Album'),
+(27, 'My Friend of Misery', '6:48', 4, 'The Black Album'),
+(28, 'The Struggle Within', '3:52', 4, 'The Black Album');
+
+INSERT INTO Genres (GenreID, GenreName) VALUES
+(11, 'Heavy Metal'),
+(12, 'Metal'),
+(13, 'Rock');
+
+INSERT INTO SongsArtists (SongArtistID, SongID, SongName, ArtistID, ArtistName) VALUES
+(27, 17, 'Enter Sandman', 14, 'Metallica'),
+(28, 18, 'Sad But True', 14, 'Metallica'),
+(29, 19, 'Holier Than Thou', 14, 'Metallica'),
+(30, 20, 'The Unforgiven', 14, 'Metallica'),
+(31, 21, 'Wherever I May Roam', 14, 'Metallica'),
+(32, 22, 'Don''t Tread on Me', 14, 'Metallica'),
+(33, 23, 'Through the Never', 14, 'Metallica'),
+(34, 24, 'Nothing Else Matters', 14, 'Metallica'),
+(35, 25, 'Of Wolf and Man', 14, 'Metallica'),
+(36, 26, 'The God That Failed', 14, 'Metallica'),
+(37, 27, 'My Friend of Misery', 14, 'Metallica'),
+(38, 28, 'The Struggle Within', 14, 'Metallica');
+
+INSERT INTO SongsGenres (SongGenreID, SongID, SongName, GenreID, GenreName) VALUES
+(27, 17, 'Enter Sandman', 11, 'Heavy Metal'),
+(28, 17, 'Enter Sandman', 12, 'Metal'),
+(29, 18, 'Sad But True', 12, 'Metal'),
+(30, 19, 'Holier Than Thou', 12, 'Metal'),
+(31, 20, 'The Unforgiven', 12, 'Metal'),
+(32, 21, 'Wherever I May Roam', 12, 'Metal'),
+(33, 22, 'Don''t Tread on Me', 12, 'Metal'),
+(34, 23, 'Through the Never', 12, 'Metal'),
+(35, 24, 'Nothing Else Matters', 13, 'Rock'),
+(36, 25, 'Of Wolf and Man', 12, 'Metal'),
+(37, 26, 'The God That Failed', 11, 'Heavy Metal'),
+(38, 27, 'My Friend of Misery', 13, 'Rock'),
+(39, 28, 'The Struggle Within', 12, 'Metal');
 */
 
 PRAGMA foreign_keys;
