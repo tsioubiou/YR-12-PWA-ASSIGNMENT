@@ -47,11 +47,11 @@ CREATE TABLE SongsGenres (
     FOREIGN KEY (SongID) REFERENCES Songs(SongID),
     FOREIGN KEY (GenreID) REFERENCES Genres(GenreID)
 );
-*/
+
 
 --Use this structure to add the single: Creo - Sky and Soul to the database.
 
-/*
+
 INSERT INTO Artists (ArtistID, ArtistName) VALUES
 (1, 'Creo');
 
@@ -71,11 +71,11 @@ INSERT INTO SongsArtists (SongArtistID, SongID, SongName, ArtistID, ArtistName) 
 INSERT INTO SongsGenres (SongGenreID, SongID, SongName, GenreID, GenreName) VALUES
 (1, 1, 'Sky and Soul', 1, 'Electronic'),
 (2, 1, 'Sky and Soul', 2, 'Soul');
-*/
+
 
 --Use this structure to add the solo album: Anonimato to the database.
 
-/*
+
 INSERT INTO Artists (ArtistID, ArtistName) VALUES
 (2, 'Devath');
 
@@ -116,12 +116,12 @@ INSERT INTO SongsGenres (SongGenreID, SongID, SongName, GenreID, GenreName) VALU
 (14, 6, 'Dream Parade', 3, 'Dubstep'),
 (15, 6, 'Dream Parade', 4, 'Riddim'),
 (16, 6, 'Dream Parade', 5, 'Tearout');
-*/
+
 
 --Request by: Sister.
 --Use this structure to add the multi-artist collaboration album: UNDERTALE (10-Year Anniversary Remixes) to the database.
 
-/*
+
 INSERT INTO Artists (ArtistID, ArtistName) VALUES
 (3, 'Toby Fox'),
 (4, 'Øneheart'),
