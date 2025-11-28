@@ -1,32 +1,37 @@
-const assets = [
+const assetsToCache = [
   "/",
+  "index.html",
+  "manifest.json",
   "css/style.css",
   "js/app.js",
-  "/images/logo.png",
-  "/images/blog2.jpg",
-  "/images/favicon.jpg",
-  "/icons/icon-128x128.png",
-  "/icons/icon-192x192.png",
-  "/icons/icon-384x384.png",
-  "/icons/icon-512x512.png"
+  "html/artistPage.html",
+  "icons/pwaLogo128px.png",
+  "icons/pwaLogo192px.png",
+  "icons/pwaLogo384px.png",
+  "icons/pwaLogo512px.png",
+  "images/pwaLogoImage.png",
+  "images/magnifyingGlass.png"
 ];
 
-const CATALOGUE_ASSETS = "catalogue-assets";
+const cachedAssetsList = "cachedAssetsList";
 
 self.addEventListener("install", (installEvt) => {
-  installEvt.waitUntil(caches.open(CATALOGUE_ASSETS).then((cache) => {
-    console.log(cache)
-    cache.addAll(assets);
+  installEvt.waitUntil(caches.open(cachedAssetsList).then((cacheEditor) => {
+    console.log("Cache added");
+    return cacheEditor.addAll(assetsToCache);
   })
-  .then(self.skipWaiting()).catch((e) => {
-    console.log(e);
+  .then(() => {
+    self.skipWaiting();
+  })
+  .catch((error) => {
+    console.log(error);
   }));
 });
 
-self.addEventListener("activate", function (evt) {
-  evt.waitUntil(caches.keys().then((keyList) => {
-    return Promise.all(keyList.map((key) => {
-      if (key === CATALOGUE_ASSETS) {
+self.addEventListener("activate", (activateEvt) => {
+  activateEvt.waitUntil(caches.keys().then((existingCacheLists) => {
+    return Promise.all(existingCacheLists.map((key) => {
+      if (key !== cachedAssetsList) {
         console.log("Removed old cache from", key);
         return caches.delete(key);
       }
@@ -35,10 +40,10 @@ self.addEventListener("activate", function (evt) {
   .then(() => self.clients.claim()));
 });
 
-self.addEventListener("fetch", function (evt) {
-  evt.respondWith(fetch(evt.request).catch(() => {
-    return caches.open(CATALOGUE_ASSETS).then((cache) => {
-      return cache.match(evt.request);
+self.addEventListener("fetch", (fetchEvt) => {
+  fetchEvt.respondWith(fetch(fetchEvt.request).catch(() => {
+    return caches.open(cachedAssetsList).then((cacheEditor) => {
+      return cacheEditor.match(fetchEvt.request);
     });
   }));
 })
