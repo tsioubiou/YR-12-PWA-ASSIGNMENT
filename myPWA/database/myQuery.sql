@@ -1,6 +1,6 @@
+/*
 PRAGMA foreign_keys = ON;
 
-/*
 CREATE TABLE Artists (
     ArtistID INT PRIMARY KEY NOT NULL,
     ArtistName VARCHAR(255) NOT NULL
@@ -247,6 +247,6 @@ INSERT INTO SongsGenres (SongGenreID, SongID, SongName, GenreID, GenreName) VALU
 (37, 26, 'The God That Failed', 11, 'Heavy Metal'),
 (38, 27, 'My Friend of Misery', 13, 'Rock'),
 (39, 28, 'The Struggle Within', 12, 'Metal');
-*/
 
 PRAGMA foreign_keys;
+*/

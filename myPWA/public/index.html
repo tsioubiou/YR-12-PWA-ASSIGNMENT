@@ -5,13 +5,43 @@
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0"/>
     <meta http-equiv = "Content-Security-Policy" content = "script-src 'self';"/>
 
-    <link rel = "stylesheet" href = "css/style.css">
+    <link rel = "stylesheet" href = "css/navBar.css">
     <link rel = "manifest" href = "manifest.json" crossorigin = "use-credentials">
     <link rel = "icon" type = "image/png" href = "images/pwaLogoImage.png">
 
     <title>Patterns Waveforms Artists</title>
-      </head>
-      
+
+    <style>
+
+      * {
+        background-color: #000000;
+        color: #ffffff;
+        font-family: 'Tahoma', sans-serif;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+      button {
+        border: 2px solid white;
+        border-radius: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 40px;
+        padding-right: 40px;
+        margin-right: 15px;
+        margin-left: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      button:hover {
+        background-color: #FFFFFF;
+        color: #000000;
+      }
+
+    </style>
+  </head>
+
   <body>
     <div class = "nav">
       <h1>Patterns Waveforms Artists</h1>
@@ -23,18 +53,18 @@
           <option value = "Albums">Albums</option>
           <option value = "Artists">Artists</option>
         </select>
+
+        <input id = "searchbar" type = "search" placeholder = "Search for...">
       </form>
 
-      <input class = "searchField" type = "text" id = "searchbar" placeholder = "Search for...">
-
-      <img class = "logoImg" src = "images/pwaLogoImage.png" alt = "[PWA Logo]" width = "65" height = "65">
+      <img src = "images/pwaLogoImage.png" alt = "[PWA Logo]" width = "65" height = "65">
     </div>
 
     <hr>
 
     <h2>The purpose of PWAs:</h2>
-    <p>Patterns Waveforms Artists was made to catalogue music from different genres and artists, promoting exploration and 
-    discovery in an attempt to shine the spotlight talented and lesser known artists and genres.</p>
+    <p>Patterns Waveforms Artists was made to catalogue music from different genres and artists, promoting exploration and
+      discovery in an attempt to shine the spotlight talented and lesser known artists and genres.</p>
 
     <h3>Search</h3>
     <button id="songSearchBtn">Search for a song</button>
@@ -47,6 +77,6 @@
     <button id="artistRequestBtn">Request to add an artist</button>
   </body>
 
-  <script src = "js/app.js"></script>
-
+  <script src = "js/navBar.js"></script>
+  <script src = "js/initServiceWorker.js"></script>
 </html>

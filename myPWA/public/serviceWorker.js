@@ -2,8 +2,9 @@ const assetsToCache = [
   "/",
   "index.html",
   "manifest.json",
-  "css/style.css",
-  "js/app.js",
+  "css/navBar.css",
+  "js/navBar.js",
+  "js/initServiceWorker.js",
   "html/artistPage.html",
   "icons/pwaLogo128px.png",
   "icons/pwaLogo192px.png",
@@ -17,7 +18,6 @@ const cachedAssetsList = "cachedAssetsList";
 
 self.addEventListener("install", (installEvt) => {
   installEvt.waitUntil(caches.open(cachedAssetsList).then((cacheEditor) => {
-    console.log("Cache added");
     return cacheEditor.addAll(assetsToCache);
   })
   .then(() => {
@@ -41,8 +41,10 @@ self.addEventListener("activate", (activateEvt) => {
 });
 
 self.addEventListener("fetch", (fetchEvt) => {
-  fetchEvt.respondWith(fetch(fetchEvt.request).catch(() => {
+  fetchEvt.respondWith(fetch(fetchEvt.request).catch((error) => {
+    console.log("Server dont wanna play along cuz: " + error);
     return caches.open(cachedAssetsList).then((cacheEditor) => {
+      console.log("Unable to fetch requested file, serving from cache instead.")
       return cacheEditor.match(fetchEvt.request);
     });
   }));
