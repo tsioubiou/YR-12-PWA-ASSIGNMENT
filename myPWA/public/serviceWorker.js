@@ -1,11 +1,11 @@
 const assetsToCache = [
   "/",
-  "index.html",
   "manifest.json",
+  "index.html",
+  "html/artistPage.html",
   "css/navBar.css",
   "js/navBar.js",
   "js/initServiceWorker.js",
-  "html/artistPage.html",
   "icons/pwaLogo128px.png",
   "icons/pwaLogo192px.png",
   "icons/pwaLogo384px.png",

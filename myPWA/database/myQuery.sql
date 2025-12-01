@@ -250,3 +250,5 @@ INSERT INTO SongsGenres (SongGenreID, SongID, SongName, GenreID, GenreName) VALU
 
 PRAGMA foreign_keys;
 */
+
+SELECT SongName, SongLength, AlbumName FROM Songs WHERE SongName LIKE '%%';

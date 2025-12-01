@@ -10,36 +10,6 @@
     <link rel = "icon" type = "image/png" href = "images/pwaLogoImage.png">
 
     <title>Patterns Waveforms Artists</title>
-
-    <style>
-
-      * {
-        background-color: #000000;
-        color: #ffffff;
-        font-family: 'Tahoma', sans-serif;
-        margin-left: 5px;
-        margin-right: 5px;
-      }
-
-      button {
-        border: 2px solid white;
-        border-radius: 20px;
-        padding-top: 15px;
-        padding-bottom: 15px;
-        padding-left: 40px;
-        padding-right: 40px;
-        margin-right: 15px;
-        margin-left: 15px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-      }
-
-      button:hover {
-        background-color: #FFFFFF;
-        color: #000000;
-      }
-
-    </style>
   </head>
 
   <body>
@@ -49,7 +19,7 @@
       <form id = "searchForm">
         <select id = "searchDropdown">
           <option selected disabled hidden value = "Default">Search for...</option>
-          <option value = "Singles">Singles</option>
+          <option value = "Songs">Songs</option>
           <option value = "Albums">Albums</option>
           <option value = "Artists">Artists</option>
         </select>
@@ -62,19 +32,21 @@
 
     <hr>
 
-    <h2>The purpose of PWAs:</h2>
-    <p>Patterns Waveforms Artists was made to catalogue music from different genres and artists, promoting exploration and
-      discovery in an attempt to shine the spotlight talented and lesser known artists and genres.</p>
+    <div class = "changingInfo">
+      <h2>The purpose of PWAs:</h2>
+      <p>Patterns Waveforms Artists was made to catalogue music from different genres and artists, promoting exploration and
+        discovery in an attempt to shine the spotlight talented and lesser known artists and genres.</p>
 
-    <h3>Search</h3>
-    <button id="songSearchBtn">Search for a song</button>
-    <button id="albumSearchBtn">Search for an album</button>
-    <button id="artistSearchBtn">Search for an artist</button>
+      <h3>Search</h3>
+      <button id="songSearchBtn">Search for a song</button>
+      <button id="albumSearchBtn">Search for an album</button>
+      <button id="artistSearchBtn">Search for an artist</button>
 
-    <h3>Request to add to the database</h3>
-    <button id="songRequestBtn">Request to add a song</button>
-    <button id="albumRequestBtn">Request to add an album</button>
-    <button id="artistRequestBtn">Request to add an artist</button>
+      <h3>Request to add to the database</h3>
+      <button id="songRequestBtn">Request to add a song</button>
+      <button id="albumRequestBtn">Request to add an album</button>
+      <button id="artistRequestBtn">Request to add an artist</button>
+    </div>
   </body>
 
   <script src = "js/navBar.js"></script>
