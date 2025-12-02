@@ -1,10 +1,15 @@
-const assetsToCache = [
+const assetsToCache = [ // The list of filepaths starting from public that should be cached.
   "/",
   "manifest.json",
   "index.html",
-  "html/artistPage.html",
+  "html/albumsPage.html",
+  "html/artistsPage.html",
+  "html/songsPage.html",
   "css/navBar.css",
   "js/navBar.js",
+  "js/albumSearchRetriever.js",
+  "js/artistSearchRetriever.js",
+  "js/songSearchRetriever.js",
   "js/initServiceWorker.js",
   "icons/pwaLogo128px.png",
   "icons/pwaLogo192px.png",
@@ -14,38 +19,38 @@ const assetsToCache = [
   "images/magnifyingGlass.png"
 ];
 
-const cachedAssetsList = "cachedAssetsList";
+const cachedAssetsList = "cachedAssetsList"; // Name of the cache.
 
-self.addEventListener("install", (installEvt) => {
-  installEvt.waitUntil(caches.open(cachedAssetsList).then((cacheEditor) => {
-    return cacheEditor.addAll(assetsToCache);
+self.addEventListener("install", (installEvt) => { // When serviceWorker is installed.
+  installEvt.waitUntil(caches.open(cachedAssetsList).then((cacheEditor) => { // Don't go to the next step until.
+    return cacheEditor.addAll(assetsToCache); // You open the cache and write all the files in the list into it.
   })
   .then(() => {
-    self.skipWaiting();
+    self.skipWaiting(); // Then skip the waiting step.
   })
   .catch((error) => {
     console.log(error);
   }));
 });
 
-self.addEventListener("activate", (activateEvt) => {
-  activateEvt.waitUntil(caches.keys().then((existingCacheLists) => {
+self.addEventListener("activate", (activateEvt) => { // Go to activate.
+  activateEvt.waitUntil(caches.keys().then((existingCacheLists) => { // Don't end activation step until.
     return Promise.all(existingCacheLists.map((key) => {
-      if (key !== cachedAssetsList) {
+      if (key !== cachedAssetsList) { // Check if any of the saved caches don't have the same name as the current one.
         console.log("Removed old cache from", key);
-        return caches.delete(key);
+        return caches.delete(key); // And delete them if True.
       }
     }));
   })
-  .then(() => self.clients.claim()));
+  .then(() => self.clients.claim())); // Take control of the tab once this happens.
 });
 
-self.addEventListener("fetch", (fetchEvt) => {
-  fetchEvt.respondWith(fetch(fetchEvt.request).catch((error) => {
+self.addEventListener("fetch", (fetchEvt) => { // When fetch event is fired.
+  fetchEvt.respondWith(fetch(fetchEvt.request).catch((error) => { // Respond with what the server serves for the request.
     console.log("Server dont wanna play along cuz: " + error);
-    return caches.open(cachedAssetsList).then((cacheEditor) => {
+    return caches.open(cachedAssetsList).then((cacheEditor) => { // If theres an error when getting the requested file.
       console.log("Unable to fetch requested file, serving from cache instead.")
-      return cacheEditor.match(fetchEvt.request);
+      return cacheEditor.match(fetchEvt.request); // Try get it from the cache instead (maybe offline).
     });
   }));
 })
